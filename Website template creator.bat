@@ -41,11 +41,11 @@ del "%temp%\fchooser.exe" 2>NUL
 
 rem This section makes a folder for the project
 
-if exist "Coding Club" (
+if exist "%saveLocation%\Coding Club" (
 	goto folderCodingClubExists
 )
 
-set folder="Coding Club"
+set folder="%saveLocation%\Coding Club"
 md %folder%
 goto folderSuccessfullyCreated
 
@@ -54,19 +54,19 @@ set /a folderNumber = 1
 :folderCodingClubExists
 
 set /a folderNumber += 2
-if exist "Coding Club %folderNumber%" (
+if exist "%saveLocation%\Coding Club %folderNumber%" (
 	goto folderCodingClubExists
 )
 
-set folder="Coding Club %folderNumber%"
+set folder="%saveLocation%\Coding Club %folderNumber%"
 md %folder%
 
 
 rem This section writes two files and inserts template code into them
 
 :folderSuccessfullyCreated
-set htmlFile=%folder%"/index.html"
-set JSFile=%folder%"/app.js"
+set htmlFile=%folder%/index.html
+set JSFile=%folder%/app.js
 
 break > %htmlFile%
 break > %JSFile%
